@@ -50,6 +50,16 @@ def vec2listlist(vec):
         listlist.append(tmp_list)
     return listlist
 
+def find_centroid(veclist):
+    num_vecs = len(veclist)
+    vec = {}
+    for r in veclist[0].D:
+        avg = 0
+        for p in range(num_vecs):
+            avg += veclist[p][r]
+        avg = avg/num_vecs
+        vec[r] = avg
+    return Vec(veclist[0].D, vec)
 
 image_dict = load_images("faces")
 D = {(x,y) for x in range(X_VALUE) for y in range(Y_VALUE)}
