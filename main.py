@@ -3,9 +3,17 @@ import image
 import os
 import webbrowser
 import tempfile
+import sqlite3
+from flask import Flask, request, session, g, redirect, url_for, \
+abort, render_template, flash
+from contextlib import closing
 
 from vec import Vec
 from mat import Mat
+
+# creating our application
+app = Flask(__name__)
+app.config.from_object(__name__)
 
 X_VALUE = 240
 Y_VALUE = 251
@@ -61,37 +69,14 @@ def find_centroid(veclist):
         vec[r] = avg
     return Vec(veclist[0].D, vec)
 
-image_dict = load_images("faces")
-D = {(x,y) for x in range(X_VALUE) for y in range(Y_VALUE)}
-face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[r])) for x in range(len(image_dict[r][y]))}) for r in image_dict}
+@app.route('/grab', methods=['POST'])
+def grab_pic():
+     image.image2file(image.gray2color(request.form['photo'], "/tmp/faces/received.png"))
+     slothize(request.form['gradient'])
 
-centroid = find_centroid([face_images[r] for r in face_images])
-
-centroid1 = transform([face_images[r] for r in face_images], 0.1)
-centroid2 = transform([face_images[r] for r in face_images], 0.2)
-centroid3 = transform([face_images[r] for r in face_images], 0.3)
-centroid4 = transform([face_images[r] for r in face_images], 0.4)
-centroid5 = transform([face_images[r] for r in face_images], 0.5)
-centroid6 = transform([face_images[r] for r in face_images], 0.6)
-centroid7 = transform([face_images[r] for r in face_images], 0.7)
-centroid8 = transform([face_images[r] for r in face_images], 0.8)
-centroid9 = transform([face_images[r] for r in face_images], 0.9)
-centroid10 = transform([face_images[r] for r in face_images], 1.0)
-centroid11 = transform([face_images[r] for r in face_images], -0.8)
-
-
-image.image2file(image.gray2color(vec2listlist(centroid)), "/tmp/temp.png")
-image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
-image.image2file(image.gray2color(vec2listlist(centroid2)), "/tmp/temp2.png")
-image.image2file(image.gray2color(vec2listlist(centroid3)), "/tmp/temp3.png")
-image.image2file(image.gray2color(vec2listlist(centroid4)), "/tmp/temp4.png")
-image.image2file(image.gray2color(vec2listlist(centroid5)), "/tmp/temp5.png")
-image.image2file(image.gray2color(vec2listlist(centroid6)), "/tmp/temp6.png")
-image.image2file(image.gray2color(vec2listlist(centroid7)), "/tmp/temp7.png")
-image.image2file(image.gray2color(vec2listlist(centroid8)), "/tmp/temp8.png")
-image.image2file(image.gray2color(vec2listlist(centroid9)), "/tmp/temp9.png")
-image.image2file(image.gray2color(vec2listlist(centroid10)), "/tmp/temp10.png")
-image.image2file(image.gray2color(vec2listlist(centroid11)), "/tmp/temp11.png")
-'''
-image.image2display(vec2listlist(centroid), webbrowser.get())
-'''
+def slothize(gradient):
+     image_dict = load_images("faces")
+     D = {(x,y) for x in range(X_VALUE) for y in range(Y_VALUE)}
+     face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[r])) for x in range(len(image_dict[r][y]))}) for r in image_dict}
+     slothd = transform([face_images[r] for r in face_images], gradient)
+     image.image2file(image.gray2color(vec2listlist(slothd)), "/tmp/slothd.png")
