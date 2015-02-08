@@ -76,7 +76,7 @@ def index():
 
 @app.route('/grab', methods=['POST'])
 def grab_pic():
-     image.image2file(image.gray2color(request.form['photo'], "/tmp/faces/received.png"))
+     image.image2file(image.gray2color(request.files['photo'], "/tmp/faces/received.png"))
      return render_template('sloth.html', img = slothize(request.form['gradient']))
 
 def slothize(gradient):
