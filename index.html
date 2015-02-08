@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></link>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    </head>
+    <body>
+
+    	<header>
+
+    		<h1>SLOTH</h1>
+
+    	</header>
+
+
+    	<div class="main">
+
+    		<div id="cam">
+                <video autoplay></video>
+    		</div>
+            <canvas height='480' width='640' style="display:none;width:640px;height:480px;"></canvas>
+
+            <p><button class="clearfix" id="the_button">blic blic</button></p>
+
+    	</div>
+
+        <div class="main">
+            <form method="POST" action="{{ url_for('grab_pic')}}">
+                <input type="image" name="photo" height='480' width='640' id="tmp" alt=" "></image>
+                <input type="number" name="gradient">
+                <input type="submit" value="get slothy">
+            </form>
+        </div>
+
+
+    	<footer>
+
+    	</footer>
+        <script src="{{ url_for('static', filename='main.js') }}"></script>
+    </body>
+</html>
