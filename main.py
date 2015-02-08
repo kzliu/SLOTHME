@@ -1,6 +1,9 @@
 import png
 import image
 import os
+import webbrowser
+import tempfile
+
 from vec import Vec
 from mat import Mat
 
