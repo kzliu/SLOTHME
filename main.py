@@ -67,7 +67,7 @@ face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[
 
 centroid = find_centroid([face_images[r] for r in face_images])
 
-centroid1 = transform([face_images[r] for r in face_images])
+centroid1 = transform([face_images[r] for r in face_images], 0.5)
 
 image.image2file(image.gray2color(vec2listlist(centroid)), "/tmp/temp.png")
 image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
