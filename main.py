@@ -7,8 +7,8 @@ import tempfile
 from vec import Vec
 from mat import Mat
 
-X_VALUE = 166
-Y_VALUE = 189
+X_VALUE = 240
+Y_VALUE = 251
 
 def file2image(path):
      (w, h, p, m) = png.Reader(filename = path).asRGBA()
