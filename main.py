@@ -61,5 +61,5 @@ print(vec2listlist(centroid))
 '''
 image.image2file(vec2listlist(centroid), "/tmp")
 '''
-image.image2display(vec2listlist(centroid), None)
+image.image2display(vec2listlist(centroid), "chrome")
 
