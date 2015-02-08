@@ -35,7 +35,7 @@ def load_images(directoryname, num_faces = 2):
  
 def find_centroid(veclist):
      num_vecs = len(veclist)
-     print ("THE NUMBER OF THINGS IN OUR VECLIST:" + num_vecs)
+     print ("THE NUMBER OF THINGS IN OUR VECLIST:", num_vecs)
      vec = {}
      for r in veclist[0].D:
          avg = 0
