@@ -14,6 +14,7 @@ from mat import Mat
 # creating our application
 app = Flask(__name__)
 app.config.from_object(__name__)
+app.config['DEBUG'] = True
 
 X_VALUE = 240
 Y_VALUE = 251
