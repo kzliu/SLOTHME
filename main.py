@@ -47,7 +47,7 @@ def vec2listlist(vec):
         tmp_list = []
         for i in range(X_VALUE):
             tmp_list += [vec[(i,p)]]
-        listlist += tmp_list
+        listlist.append(tmp_list)
     return listlist
 
 
