@@ -112,6 +112,10 @@ header {
 	text-align: center;
 }
 
+div.ctnr {
+	width: 100%;
+}
+
 div.main {
 	width: 640px;
 	margin: 0 auto;

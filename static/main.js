@@ -46,7 +46,7 @@ $("#override").click(function(e) {
       gradient: grad
     },
     success: function(data, textStatus, jqXHR) {
-      $("body").html("<div class='main'><img src='" + data + "'></div>");
+      $(".ctnr").html("<div class='main'><img src='" + data + "'><a href='/'><h4>sloth again</h4></a></div>");
     }
   });
   return false;
