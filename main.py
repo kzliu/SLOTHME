@@ -62,7 +62,7 @@ centroid = find_centroid([face_images[r] for r in face_images])
 print(vec2listlist(centroid))
 
 
-image.image2file(vec2listlist(centroid), "/tmp/temp.png")
+image.image2file(image.color2gray(vec2listlist(centroid)), "/tmp/temp.png")
 '''
 image.image2display(vec2listlist(centroid), webbrowser.get())
 '''
