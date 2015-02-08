@@ -48,7 +48,6 @@ def vec2listlist(vec):
         listlist += tmp_list
     return listlist
 
-image_dict = load_images("faces")
 
 image_dict = load_images("faces")
 D = {(x,y) for x in range(X_VALUE) for y in range(Y_VALUE)}
