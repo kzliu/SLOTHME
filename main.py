@@ -1,6 +1,9 @@
 import png
 import image
 import os
+import vec from Vec
+import mat from Mat
+
 
 X_VALUE = 166
 Y_VALUE = 189
