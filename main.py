@@ -2,8 +2,8 @@ import png
 import image
 import os
 
->>> X_VALUE = 166
->>> Y_VALUE = 189
+>>> X_VALUE = 240
+>>> Y_VALUE = 251
 
  def file2image(path):
 ...     (w, h, p, m) = png.Reader(filename = path).asRGBA()
@@ -49,3 +49,8 @@ def image2file(image, path):
 ...     return listlist
 
 image_dict = load_images("faces")
+D = {(x,y) for x in range(X_VALUE) for y in range(Y_VALUE)}
+face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[r])) for x in range(len(image_dict[r][y]))}) for r in image_dict}
+
+centroid = find_centroid([face_images[r] for r in face_images])
+image2display(vec2listlist(centroid), None)
