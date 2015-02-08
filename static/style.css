@@ -112,6 +112,10 @@ header {
 	text-align: center;
 }
 
+p {
+	color: #829e06;
+}
+
 div.ctnr {
 	width: 100%;
 }
