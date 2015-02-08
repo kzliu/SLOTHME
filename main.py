@@ -51,7 +51,7 @@ def vec2listlist(vec):
     return listlist
 
 
-image_dict = load_images("faces")
+image_dict = load_images("/tmp")
 D = {(x,y) for x in range(X_VALUE) for y in range(Y_VALUE)}
 face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[r])) for x in range(len(image_dict[r][y]))}) for r in image_dict}
 
