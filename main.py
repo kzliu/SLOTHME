@@ -58,7 +58,7 @@ face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[
 centroid = find_centroid([face_images[r] for r in face_images])
 print(centroid)
 
-image.image2file(centroid, "")
+image.image2file(vec2listlist(centroid), "")
 '''
 image.image2display(vec2listlist(centroid), None)
 '''
