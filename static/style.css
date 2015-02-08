@@ -116,6 +116,16 @@ p {
 	color: #829e06;
 }
 
+#guy {
+	position: absolute;
+	z-index: 12;
+	top: 240px;
+	width: 155px;
+	left: 242px;
+	border: 1px solid red;
+	height:0px;
+}
+
 div.ctnr {
 	width: 100%;
 }

@@ -7,6 +7,7 @@ import os
 import webbrowser
 import tempfile
 import sqlite3
+import datetime
 from PIL import Image
 from flask import Flask, request, session, g, redirect, url_for, \
 abort, render_template, flash
@@ -86,7 +87,14 @@ def grab_pic():
      i = Image.open(photo)
      i.save("faces/img00.png", "png")
      # image.image2file(i, "/tmp/faces/received.png")
-     return url_for('static', filename=slothize(string.atof(request.form['gradient'])))
+
+     response = app.make_response(url_for('static', filename=slothize(string.atof(request.form['gradient']))))
+
+     response.headers.add('Last-Modified', datetime.datetime.now())
+     response.headers.add('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
+     response.headers.add('Pragma', 'no-cache')
+
+     return response
 
 def slothize(gradient):
      image_dict = load_images("faces")
@@ -94,6 +102,8 @@ def slothize(gradient):
      face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[r])) for x in range(len(image_dict[r][y]))}) for r in image_dict}
      slothd = transform([face_images[r] for r in face_images], gradient)
      image.image2file(vec2listlist(slothd), "static/slothd.png")
+
+
      return "slothd.png"
 
 if __name__ == "__main__":
