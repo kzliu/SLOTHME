@@ -27,10 +27,9 @@
     	</div>
 
         <div class="main">
-            <!-- <img height='480' width='640' id="tmp"> -->
-            <form method="POST" action="{{ url_for('grab_pic')}}">
-                <input type="image" name="photo" height='480' width='640' id="tmp" alt=" "></image>
-                <input type="number" name="gradient">Gradient
+            <form method=post action="{{ url_for('grab_pic')}}">
+                <input type="image" name="photo" height='480' width='640' id="tmp" alt=" ">
+                <input type="number" step="any" name="gradient">
                 <input type="submit" value="get slothy">
             </form>
         </div>
