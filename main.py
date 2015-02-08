@@ -33,16 +33,12 @@ def load_images(directoryname, num_faces = 2):
      #loads the given number of image files from the classified files
      #returns a dict of face number to image files
  
-def find_centroid(veclist):
+def transform(veclist, gradient):
      num_vecs = len(veclist)
-     print ("THE NUMBER OF THINGS IN OUR VECLIST:", num_vecs)
      vec = {}
      for r in veclist[0].D:
-         avg = 0
-         for p in range(num_vecs):
-             avg += veclist[p][r]
-         avg = avg/num_vecs
-         vec[r] = avg
+          new_val = ((1-gradient)*veclist[0][r]) + (gradient*veclist[1][r])
+          vec[r] = new_val
      return Vec(veclist[0].D, vec)
  
 def vec2listlist(vec):
