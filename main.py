@@ -72,7 +72,7 @@ def find_centroid(veclist):
 
 @app.route('/', methods=['GET'])
 def index():
-     render_template('index.html', title = 'SLOTHME')
+     return render_template('index.html', title = 'SLOTHME')
 
 @app.route('/grab', methods=['POST'])
 def grab_pic():
