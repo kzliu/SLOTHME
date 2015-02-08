@@ -77,6 +77,8 @@ centroid7 = transform([face_images[r] for r in face_images], 0.7)
 centroid8 = transform([face_images[r] for r in face_images], 0.8)
 centroid9 = transform([face_images[r] for r in face_images], 0.9)
 centroid10 = transform([face_images[r] for r in face_images], 1.0)
+centroid11 = transform([face_images[r] for r in face_images], -0.5)
+
 
 image.image2file(image.gray2color(vec2listlist(centroid)), "/tmp/temp.png")
 image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
@@ -89,6 +91,7 @@ image.image2file(image.gray2color(vec2listlist(centroid7)), "/tmp/temp7.png")
 image.image2file(image.gray2color(vec2listlist(centroid8)), "/tmp/temp8.png")
 image.image2file(image.gray2color(vec2listlist(centroid9)), "/tmp/temp9.png")
 image.image2file(image.gray2color(vec2listlist(centroid10)), "/tmp/temp10.png")
+image.image2file(image.gray2color(vec2listlist(centroid11)), "/tmp/temp11.png")
 '''
 image.image2display(vec2listlist(centroid), webbrowser.get())
 '''
