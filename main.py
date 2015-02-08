@@ -69,7 +69,7 @@ def find_centroid(veclist):
         vec[r] = avg
     return Vec(veclist[0].D, vec)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
      return render_template('index.html', title = 'SLOTHME')
 
@@ -84,3 +84,6 @@ def slothize(gradient):
      face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[r])) for x in range(len(image_dict[r][y]))}) for r in image_dict}
      slothd = transform([face_images[r] for r in face_images], gradient)
      image.image2file(image.gray2color(vec2listlist(slothd)), "/tmp/slothd.png")
+
+if __name__ == "__main__":
+    app.run()
