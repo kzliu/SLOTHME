@@ -77,7 +77,7 @@ centroid7 = transform([face_images[r] for r in face_images], 0.7)
 centroid8 = transform([face_images[r] for r in face_images], 0.8)
 centroid9 = transform([face_images[r] for r in face_images], 0.9)
 centroid10 = transform([face_images[r] for r in face_images], 1.0)
-centroid11 = transform([face_images[r] for r in face_images], -0.5)
+centroid11 = transform([face_images[r] for r in face_images], -0.8)
 
 
 image.image2file(image.gray2color(vec2listlist(centroid)), "/tmp/temp.png")
