@@ -1,9 +1,13 @@
 import png
+import string
+import base64
 import image
+import cStringIO
 import os
 import webbrowser
 import tempfile
 import sqlite3
+from PIL import Image
 from flask import Flask, request, session, g, redirect, url_for, \
 abort, render_template, flash
 from contextlib import closing
@@ -16,8 +20,8 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['DEBUG'] = True
 
-X_VALUE = 240
-Y_VALUE = 251
+X_VALUE = 640
+Y_VALUE = 480
 
 def file2image(path):
      (w, h, p, m) = png.Reader(filename = path).asRGBA()
@@ -76,16 +80,21 @@ def index():
 
 @app.route('/grab', methods=['POST'])
 def grab_pic():
-     image.image2file(image.gray2color(request.files['photo'], "/tmp/faces/received.png"))
-     return render_template('sloth.html', img = slothize(request.form['gradient']))
+     print(request)
+     # import pdb; pdb.set_trace()
+     photo = cStringIO.StringIO(base64.b64decode(request.form['photo']))
+     i = Image.open(photo)
+     i.save("faces/img00.png", "png")
+     # image.image2file(i, "/tmp/faces/received.png")
+     return url_for('static', filename=slothize(string.atof(request.form['gradient'])))
 
 def slothize(gradient):
      image_dict = load_images("faces")
      D = {(x,y) for x in range(X_VALUE) for y in range(Y_VALUE)}
      face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[r])) for x in range(len(image_dict[r][y]))}) for r in image_dict}
      slothd = transform([face_images[r] for r in face_images], gradient)
-     image.image2file(image.gray2color(vec2listlist(slothd)), "/tmp/slothd.png")
-     return "/tmp/slothd.png"
+     image.image2file(vec2listlist(slothd), "static/slothd.png")
+     return "slothd.png"
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)

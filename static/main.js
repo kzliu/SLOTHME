@@ -6,7 +6,7 @@ var constraints = {audio: false, video: true};
 var video = document.querySelector('video');
 var cvs = document.querySelector('canvas');
 var ctx = cvs.getContext('2d');
-var img = document.querySelector('#tmp');
+var file = document.querySelector('#tmp');
 var streaming = false;
 
 function successCallback(stream) {
@@ -31,5 +31,23 @@ $("#the_button").click(function(e) {
 	if (!streaming) return;
 	ctx.drawImage(video,0,0);
 	console.log(cvs.toDataURL('image/png'));
-	img.src = cvs.toDataURL('image/png');
+	file.src = cvs.toDataURL('image/png');
+});
+
+$("#override").click(function(e) {
+  var encoded = file.src.replace(/^data:image\/(png|jpg);base64,/, "");
+
+  var grad=$("#grad").val();
+  $.ajax({
+    type: "post", 
+    url: "grab",
+    data : {
+      photo: encoded,
+      gradient: grad
+    },
+    success: function(data, textStatus, jqXHR) {
+      $("body").html("<div class='main'><img src='" + data + "'></div>");
+    }
+  });
+  return false;
 });
