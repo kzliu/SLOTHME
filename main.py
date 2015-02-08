@@ -67,9 +67,24 @@ face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[
 
 centroid = find_centroid([face_images[r] for r in face_images])
 
-centroid1 = transform([face_images[r] for r in face_images], 0.5)
+centroid1 = transform([face_images[r] for r in face_images], 0.1)
+centroid2 = transform([face_images[r] for r in face_images], 0.2)
+centroid3 = transform([face_images[r] for r in face_images], 0.3)
+centroid4 = transform([face_images[r] for r in face_images], 0.4)
+centroid5 = transform([face_images[r] for r in face_images], 0.5)
+centroid6 = transform([face_images[r] for r in face_images], 0.6)
+centroid7 = transform([face_images[r] for r in face_images], 0.7)
+centroid8 = transform([face_images[r] for r in face_images], 0.8)
+centroid9 = transform([face_images[r] for r in face_images], 0.9)
+centroid10 = transform([face_images[r] for r in face_images], 1.0)
 
 image.image2file(image.gray2color(vec2listlist(centroid)), "/tmp/temp.png")
+image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
+image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
+image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
+image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
+image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
+image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
 image.image2file(image.gray2color(vec2listlist(centroid1)), "/tmp/temp1.png")
 '''
 image.image2display(vec2listlist(centroid), webbrowser.get())
