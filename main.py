@@ -69,6 +69,10 @@ def find_centroid(veclist):
         vec[r] = avg
     return Vec(veclist[0].D, vec)
 
+@app.route('/')
+def index():
+     return render_template('index.html', title = 'SLOTHME')
+
 @app.route('/grab', methods=['POST'])
 def grab_pic():
      image.image2file(image.gray2color(request.form['photo'], "/tmp/faces/received.png"))
