@@ -1,0 +1,15 @@
+`main.py`
+
+	@app.route '/grab'
+
+		save png to file
+		call slothize with gradient param - how slothy
+
+		slothize
+
+			image_dict := load_images(...)
+				load_images: gives us b&w image loaded from file saved above. why do we do this?
+
+			D := [0,...,WIDTH] X [0,...,HEIGHT]
+
+			face_images := whoah what is this
