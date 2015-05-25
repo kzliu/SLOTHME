@@ -100,7 +100,6 @@ def slothize(gradient):
      image_dict = load_images("faces")
      D = {(x,y) for x in range(X_VALUE) for y in range(Y_VALUE)}
      face_images = {r:Vec(D,{(x,y):image_dict[r][y][x] for y in range(len(image_dict[r])) for x in range(len(image_dict[r][y]))}) for r in image_dict}
-     print(face_images)
      slothd = transform([face_images[r] for r in face_images], gradient)
      image.image2file(vec2listlist(slothd), "static/slothd.png")
 

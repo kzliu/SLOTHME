@@ -8,8 +8,35 @@
 		slothize
 
 			image_dict := load_images(...)
-				load_images: gives us b&w image loaded from file saved above. why do we do this?
+				load_images: gives us b&w images loaded from file saved above, and sloth image
 
 			D := [0,...,WIDTH] X [0,...,HEIGHT]
 
-			face_images := whoah what is this
+			face_images := dict. int keys. values are Vec(D, {(x,y) pairs key pixel values everywhere in the images})
+				from vec.py: 
+				Vec  A vector has two fields:
+   					 D - the domain (a set)
+    				 f - a dictionary mapping (some) domain elements to field elements
+      				     elements of D not appearing in f are implicitly mapped to zero
+
+      			so each thing in face_images is the image converted into coordinate maps to pixel vals.
+
+      		then we rly get into it:
+
+      		slothd := transform(  array of selfie Vec,  slothpic Vec , our gradient value  )
+
+      			transform:
+
+      				num_vecs := number of images
+
+      				vec := empty dict
+
+      				then, for each point in the images, lerp pixel vals w/ 1-gradient and gradient
+
+      				return blended Vec
+
+      			that's what we send back once we do some conversions. damn so we don't even use centroid stuff?
+
+
+
+
